@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat App with Rooms</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="chat-container">
+    <div class="header">
+      <h2>Real-Time Chat</h2>
+      <div class="room-buttons">
+        <button onclick="joinRoom('room1')">Room 1</button>
+        <button onclick="joinRoom('room2')">Room 2</button>
+      </div>
+    </div>
+    <div id="messages"></div>
+    <form id="chat-form">
+      <div class="submit">
+        <input id="msg" autocomplete="off" placeholder="Type a message..." required />
+        <button type="submit">Send</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
