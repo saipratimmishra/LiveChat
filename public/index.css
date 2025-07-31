@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  text-align: center;
+}
+
+#chat-container {
+  background: #fff;
+  padding: 20px;
+  width: 500px;
+  box-shadow: 0 0 10px #ccc;
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-buttons button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.room-buttons button:hover {
+  background: #444;
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.owner, .other {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+#messages {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #000;
+}
+
+#messages div {
+  margin-bottom: 10px;
+}
+
+.owner {
+  background: linear-gradient(135deg, #3b25da, #2247dd);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 16px;
+  max-width: 70%;
+  text-align: left;
+}
+
+.other {
+  background: linear-gradient(135deg, #444, #222);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 16px;
+  max-width: 70%;
+  text-align: left;
+}
+
+#msg {
+  width: 50%;
+  padding: 10px;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 30%;
+  padding: 10px;
+  color: black;
+  background-color: #ffe816;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
