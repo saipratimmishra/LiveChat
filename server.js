@@ -32,7 +32,7 @@ io.on('connection', socket => {
 
   socket.on('chatMessage', ({ msg, room }) => {
     const name = users[socket.id] || 'Anonymous'
-    const timestamp = moment().format('hh:mm A')
+    const timestamp = moment().utcOffset('+05:30').format('hh:mm A')
     io.to(room).emit('message', { msg: `${name}: ${msg}`, name: socket.id, time: timestamp })
   })
 
