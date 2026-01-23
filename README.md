@@ -22,4 +22,8 @@ Simple and clean user interface
 
 Instant message updates without page reload
 
+room chat available
+
+room enter room exit msg shown
+
 Web-based chat accessible from any modern browser
