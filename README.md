@@ -4,7 +4,7 @@ A simple real-time chat web application that allows users to communicate instant
 
 🚀 Live Demo
 
-🔗 https://livechatbysai.onrender.com(https://livechatbysai.onrender.com)
+🔗 https://livechatbysai.onrender.com
 
 🛠️ Tech Stack
 
