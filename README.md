@@ -22,6 +22,8 @@ Simple and clean user interface
 
 Instant message updates without page reload
 
+real time typing indicator
+
 room chat available
 
 room enter room exit msg shown
