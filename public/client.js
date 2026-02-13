@@ -3,11 +3,17 @@ let currentRoom = null
 let username = null
 function startChat(){
   username=document.getElementById("usernameInput").value
+  if(username!==null and username!=""){
   d1=document.getElementById("chat-container-1")
   d1.style="display:none;"
   d2=document.getElementById("chat-container")
   d2.style="display:block;"
   socket.emit('setUsername', username)
+  }
+  else{
+    err=document.getElementById("errorline")
+    err.style.display="block"
+  }
 }
 
 const form = document.getElementById('chat-form')
