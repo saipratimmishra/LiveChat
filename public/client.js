@@ -2,7 +2,7 @@ const socket = io()
 let currentRoom = null
 function startChat(){
   let username=document.getElementById("usernameInput").value
-  if(username!==null || username!=""){
+  if(username!=""){
   d1=document.getElementById("chat-container-1")
   d1.style="display:none;"
   d2=document.getElementById("chat-container")
