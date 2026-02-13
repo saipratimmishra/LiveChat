@@ -1,16 +1,24 @@
 const socket = io()
 let currentRoom = null
-
-const username = prompt('Enter your name:')
-socket.emit('setUsername', username)
+let username = null
+function startChat(){
+  username=document.getElementById("usernameInput").value
+  d1=document.getElementById("chat-container-1")
+  d1.style="display:none;"
+  d2=document.getElementById("chat-container")
+  d2.style="display:block;"
+  socket.emit('setUsername', username)
+}
 
 const form = document.getElementById('chat-form')
 const input = document.getElementById('msg')
 const messages = document.getElementById('messages')
+let r1 = ""
 
 function joinRoom(room) {
   if (currentRoom) socket.emit('leaveRoom', currentRoom)
   currentRoom = room
+  r1 = room
   socket.emit('joinRoom', room)
   messages.innerHTML = ''
 }
@@ -23,12 +31,33 @@ form.addEventListener('submit', e => {
   }
 })
 
+input.addEventListener("input", () => {
+  socket.emit("typing", currentRoom)  
+})
+
 socket.on("enter-message", msg => {
   const div = document.createElement('div')
   div.textContent = msg
   div.style = "color:white;"
   messages.appendChild(div)
   messages.scrollTop = messages.scrollHeight
+})
+let count=0
+socket.on("typing", name => {
+  
+  if(count==0){
+  count+=1
+  const div = document.createElement('div')
+  div.textContent = name+" is typing..."
+  div.style = "color:white;"
+  messages.appendChild(div)
+  messages.scrollTop = messages.scrollHeight
+  typingTimer = setTimeout(() => {
+    count-=1
+    div.remove()
+  }, 3000);
+  }
+  
 })
 
 socket.on('message', ({ msg, name, time }) => {
