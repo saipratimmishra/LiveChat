@@ -13,15 +13,22 @@ const users = {}
 
 io.on('connection', socket => {
   console.log('User connected:', socket.id)
-
+  
   socket.on('setUsername', username => {
     users[socket.id] = username
+    io.emit('pls join a room')
   })
 
   socket.on('joinRoom', room => {
     socket.join(room)
     const name = users[socket.id]
     io.to(room).emit('enter-message', `${name} joined ${room}`)
+  })
+
+  socket.on('typing', room => {
+    console.log("hi")
+    
+    socket.broadcast.to(room).emit('typing', users[socket.id])
   })
 
   socket.on('leaveRoom', room => {
@@ -32,7 +39,7 @@ io.on('connection', socket => {
 
   socket.on('chatMessage', ({ msg, room }) => {
     const name = users[socket.id] || 'Anonymous'
-    const timestamp = moment().utcOffset('+05:30').format('hh:mm A')
+    const timestamp = moment().format('hh:mm A')
     io.to(room).emit('message', { msg: `${name}: ${msg}`, name: socket.id, time: timestamp })
   })
 
